@@ -14,8 +14,17 @@ const noteSlice = createSlice({
     createNote(state: INotesState, action: PayloadAction<INotes>) {
       state.data.push(action.payload);
     },
+    updateNote(state: INotesState, action: PayloadAction<INotes>) {
+      state.data = state.data.map(item => {
+        if (item.id === action.payload.id) {
+          return action.payload;
+        } else {
+          return item;
+        }
+      });
+    },
   },
 });
 
-export const {createNote} = noteSlice.actions;
+export const {createNote, updateNote} = noteSlice.actions;
 export default noteSlice.reducer;

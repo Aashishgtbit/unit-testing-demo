@@ -8,4 +8,5 @@ export const colors = {
   descriptionColor: 'grey',
   white: '#fff',
   primaryText: '#f2f2f2',
+  pressedCardColor: 'rgb(210, 230, 255)',
 };

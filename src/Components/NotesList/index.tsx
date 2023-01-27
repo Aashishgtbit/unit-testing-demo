@@ -6,14 +6,19 @@ import notesItemStyle from './styles';
 
 interface INotesListProps {
   notes: INotes[];
+  handleNoteItemPress: (note: INotes) => void;
 }
-export const NotesList: React.FC<INotesListProps> = ({notes}) => {
+export const NotesList: React.FC<INotesListProps> = ({
+  notes,
+  handleNoteItemPress,
+}) => {
   const renderItem = ({item}: {item: INotes}) => {
     return (
       <NotesItem
         wrapperStyle={notesItemStyle.wrapperStyle}
         title={item.title}
         description={item.description}
+        onPress={() => handleNoteItemPress(item)}
       />
     );
   };

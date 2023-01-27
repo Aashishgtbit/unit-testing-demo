@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, View} from 'native-base';
-import {StyleProp, ViewStyle} from 'react-native';
+import {Pressable, StyleProp, ViewStyle} from 'react-native';
 
 import {colors} from '../../Styles/colors';
 import notesItemStyle from './styles';
@@ -9,21 +9,33 @@ interface INotesItemProps {
   title: string;
   description: string;
   wrapperStyle?: StyleProp<ViewStyle>;
+  onPress?: () => void;
 }
 export const NotesItem: React.FC<INotesItemProps> = ({
   title,
   description,
   wrapperStyle,
+  onPress,
 }) => {
   return (
-    <View
-      style={[notesItemStyle.card, notesItemStyle.shadowProp, wrapperStyle]}>
+    <Pressable
+      onPress={onPress}
+      style={({pressed}) => [
+        notesItemStyle.card,
+        notesItemStyle.shadowProp,
+        wrapperStyle,
+        {
+          backgroundColor: pressed ? colors.pressedCardColor : colors.white,
+        },
+      ]}>
       <View>
-        <Text fontWeight={'bold'}>{title}</Text>
+        <Text fontSize={'lg'} fontWeight={'bold'}>
+          {title}
+        </Text>
       </View>
       <View>
         <Text color={colors.descriptionColor}>{description}</Text>
       </View>
-    </View>
+    </Pressable>
   );
 };

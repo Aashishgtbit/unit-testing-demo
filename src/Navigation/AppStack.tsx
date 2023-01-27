@@ -3,6 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {AppStackParamListType, Routes} from './types';
 import HomeScreen from '../Screens/Home';
 import CreateNoteScreen from '../Screens/CreateNote';
+import UpdateNoteScreen from '../Screens/UpdateNote';
 
 const Stack = createNativeStackNavigator<AppStackParamListType>();
 
@@ -13,6 +14,10 @@ const AppStack: React.FC = () => {
       <Stack.Screen
         name={Routes.CreateNoteScreen}
         component={CreateNoteScreen}
+      />
+      <Stack.Screen
+        name={Routes.UpdateNoteScreen}
+        component={UpdateNoteScreen}
       />
     </Stack.Navigator>
   );

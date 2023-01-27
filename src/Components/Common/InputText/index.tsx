@@ -14,6 +14,7 @@ interface InputProps {
   fontSize?: IInputProps['fontSize'];
   borderColor?: ColorType;
   height?: IInputProps['height'];
+  defaultValue?: string;
 }
 const Input: React.FC<InputProps> = ({
   multiline,
@@ -26,9 +27,11 @@ const Input: React.FC<InputProps> = ({
   fontSize,
   borderColor,
   height,
+  defaultValue,
 }) => {
   return (
     <NativeBaseInput
+      defaultValue={defaultValue}
       borderColor={borderColor || 'gray.500'}
       height={height}
       fontSize={fontSize}
